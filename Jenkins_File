@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello-SCM') {
+            steps {
+                git branch: 'war', url: 'https://github.com/harins1/Maven.git'
+            }
+        }
+		stage('Hello-BUILD') {
+            steps {
+                bat 'mvn clean'
+				bat 'mvn install'
+            }
+        }
+    }
+}
